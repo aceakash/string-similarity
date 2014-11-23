@@ -1,0 +1,15 @@
+{
+  "name": "string-similarity",
+  "version": "1.0.0",
+  "description": "Finds degree of similarity between two strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
+  "main": "compare-strings.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "author": "Akash Kurdekar <npm@kurdekar.com> (http://untilfalse.com/)",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-jasmine": "^1.0.1"
+  }
+}
