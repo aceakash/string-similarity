@@ -9,19 +9,17 @@ function compareTwoStrings(str1, str2) {
   var intersection = 0;
   var union = pairs1.length + pairs2.length;
 
-  for(var i = 0; i < pairs1.length; i++) {
-    var pair1 = pairs1[i];
-
-    for(var j = 0; j < pairs2.length; j++) {
-      var pair2 = pairs2[j];
-
+  _.forEach(pairs1, function (pair1) {
+    for(var i = 0; i < pairs2.length; i++) {
+      var pair2 = pairs2[i];
       if (pair1 === pair2) {
         intersection++;
-        pairs2.splice(j, 1);
+        pairs2.splice(i, 1);
         break;
       }
     }
-  }
+  });
+
   return (2.0 * intersection) / union;
 
   // private functions ---------------------------
@@ -35,17 +33,10 @@ function compareTwoStrings(str1, str2) {
   }
 
   function wordLetterPairs(str) {
-    var allPairs = [];
-    var words = str.split(' ');
-
-    for(var w = 0; w < words.length; w++) {
-      var pairsInWord = letterPairs(words[w]);
-
-      for(var p = 0; p < pairsInWord.length; p++) {
-        allPairs.push(pairsInWord[p]);
-      }
-    }
-    return allPairs;
+    return _( str.split(' ') )
+      .map(letterPairs)
+      .flatten()
+      .value();
   }
 }
 
@@ -66,7 +57,7 @@ function findBestMatch(mainString, targetStrings) {
     bestMatch: _.max(ratings, 'rating')
   };
 
-  // helpers ---------------------
+  // private functions ---------------------------
   function areArgsValid(mainString, targetStrings) {
     var mainStringIsAString = (typeof mainString === 'string');
 
