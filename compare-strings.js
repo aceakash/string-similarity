@@ -1,4 +1,4 @@
-module.exports = function compareStrings(str1, str2) {
+exports.compareTwoStrings = function (str1, str2) {
   var pairs1 = wordLetterPairs(str1.toUpperCase());
   var pairs2 = wordLetterPairs(str2.toUpperCase());
   var intersection = 0;
@@ -42,4 +42,8 @@ module.exports = function compareStrings(str1, str2) {
     }
     return allPairs;
   }
+};
+
+exports.findBestMatch = function () {
+
 };

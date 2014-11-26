@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.8.10",
-    "gulp-jasmine": "^1.0.1"
+    "gulp-jasmine": "^1.0.1",
+    "gulp-watch": "^2.0.0"
   }
 }
