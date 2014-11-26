@@ -1,4 +1,9 @@
-exports.compareTwoStrings = function (str1, str2) {
+var _ = require('lodash');
+
+exports.compareTwoStrings = compareTwoStrings;
+exports.findBestMatch = findBestMatch;
+
+function compareTwoStrings(str1, str2) {
   var pairs1 = wordLetterPairs(str1.toUpperCase());
   var pairs2 = wordLetterPairs(str2.toUpperCase());
   var intersection = 0;
@@ -42,8 +47,35 @@ exports.compareTwoStrings = function (str1, str2) {
     }
     return allPairs;
   }
-};
+}
 
-exports.findBestMatch = function () {
 
-};
+function findBestMatch(mainString, targetStrings) {
+  if (!areArgsValid(mainString, targetStrings)) {
+    throw new Error('Bad arguments: First argument should be a string, second should be an array of strings');
+  }
+  var ratings = _.map(targetStrings, function (targetString) {
+    return {
+      target: targetString,
+      rating: compareTwoStrings(mainString, targetString)
+    };
+  });
+
+  return {
+    ratings: ratings,
+    bestMatch: _.max(ratings, 'rating')
+  };
+
+  // helpers ---------------------
+  function areArgsValid(mainString, targetStrings) {
+    var mainStringIsAString = (typeof mainString === 'string');
+
+    var targetStringsIsAnArrayOfStrings = Array.isArray(targetStrings) &&
+      targetStrings.length > 0 &&
+      _.all(targetStrings, function (targetString) {
+        return (typeof targetString === 'string');
+      });
+
+    return mainStringIsAString && targetStringsIsAnArrayOfStrings;
+  }
+}
