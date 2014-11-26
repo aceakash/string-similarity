@@ -5,12 +5,20 @@ describe('compareStrings', function () {
     expect(typeof compareStrings).toBe('function');
   });
 
-  it('returns 0.8 for healed and sealed', function () {
-    expect(compareStrings('healed', 'sealed')).toEqual(0.8);
+  it('returns 0 for totally different strings: french and quebec', function () {
+    expect(compareStrings('french', 'quebec')).toEqual(0);
   });
 
-  it('returns 0 for french and quebec', function () {
-    expect(compareStrings('french', 'quebec')).toEqual(0);
+  it('returns 1 for identical strings: france and france', function () {
+    expect(compareStrings('france', 'france')).toEqual(1);
+  });
+
+  it('returns 1 for same but differently cased strings: fRaNce and france', function () {
+    expect(compareStrings('fRaNce', 'france')).toEqual(1);
+  });
+
+  it('returns 0.8 for healed and sealed', function () {
+    expect(compareStrings('healed', 'sealed')).toEqual(0.8);
   });
 
   it('returns 0.896551724137931 for "web applications" and "applications of the web"', function () {
