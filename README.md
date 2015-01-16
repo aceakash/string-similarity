@@ -44,13 +44,16 @@ Order does not make a difference.
 stringSimilarity.compareTwoStrings('healed', 'sealed');
 // → 0.8
 
-stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 'For sale: table in very good  condition, olive green in colour.');
+stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
+  'For sale: table in very good  condition, olive green in colour.');
 // → 0.7073170731707317
 
-stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 'For sale: green Subaru Impreza, 210,000 miles');
+stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
+  'For sale: green Subaru Impreza, 210,000 miles');
 // → 0.3013698630136986
 
-stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 'Wanted: mountain bike with at least 21 gears.');
+stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
+  'Wanted: mountain bike with at least 21 gears.');
 // → 0.11267605633802817
 ```
 
