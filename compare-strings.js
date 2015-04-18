@@ -47,7 +47,7 @@ function findBestMatch(mainString, targetStrings) {
   }
   var ratings = _.map(targetStrings, function (targetString, i) {
     return {
-      index: i
+      index: i,
       target: targetString,
       rating: compareTwoStrings(mainString, targetString)
     };
