@@ -45,8 +45,9 @@ function findBestMatch(mainString, targetStrings) {
   if (!areArgsValid(mainString, targetStrings)) {
     throw new Error('Bad arguments: First argument should be a string, second should be an array of strings');
   }
-  var ratings = _.map(targetStrings, function (targetString) {
+  var ratings = _.map(targetStrings, function (targetString, i) {
     return {
+      index: i
       target: targetString,
       rating: compareTwoStrings(mainString, targetString)
     };
