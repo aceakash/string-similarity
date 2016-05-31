@@ -26,11 +26,11 @@
   "author": "Akash Kurdekar <npm@kurdekar.com> (http://untilfalse.com/)",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.8.10",
-    "gulp-jasmine": "^1.0.1",
-    "gulp-watch": "^2.0.0"
+    "gulp": "^3.9.1",
+    "gulp-jasmine": "^2.3.0",
+    "gulp-watch": "^4.3.6"
   },
   "dependencies": {
-    "lodash": "^2.4.1"
+    "lodash": "^4.13.1"
   }
 }
