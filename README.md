@@ -90,4 +90,4 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
 ```
 
 ##Build Status
-![Build status](https://codeship.com/projects/e75d4100-7f9c-0132-55b6-6afafd33df4f/status?branch=master)
+![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
