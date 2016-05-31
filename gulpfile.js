@@ -1,7 +1,5 @@
 var gulp = require('gulp');
 var jasmine = require('gulp-jasmine');
-//var watch = require('gulp-watch');
-
 
 gulp.task('test', function () {
   return gulp
