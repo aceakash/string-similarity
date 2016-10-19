@@ -5,6 +5,10 @@
   "dependencies": {
     "lodash": "^4.13.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aceakash/string-similarity.git"
+  },
   "homepage": "https://github.com/aceakash/string-similarity",
   "authors": [
     "Akash Kurdekar <npm@kurdekar.com> (http://untilfalse.com/)"
