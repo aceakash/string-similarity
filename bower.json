@@ -23,6 +23,11 @@
     "dice",
     "levenshtein"
   ],
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jasmine": "^2.3.0",
+    "gulp-watch": "^4.3.6"
+  },
   "license": "ISC",
   "private": false
 }
