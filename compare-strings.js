@@ -8,6 +8,20 @@ exports.compareTwoStrings = compareTwoStrings;
 exports.findBestMatch = findBestMatch;
 
 function compareTwoStrings(str1, str2) {
+  var result = null;
+  result = calculateResultIfIdentical(str1, str2);
+  if (result != null) {
+    return result;
+  }
+  result = calculateResultIfEitherIsEmpty(str1, str2);
+  if (result != null) {
+    return result;
+  }
+  result = calculateResultIfBothAreSingleCharacter(str1, str2);
+  if (result != null) {
+    return result;
+  }
+
   var pairs1 = wordLetterPairs(str1.toUpperCase());
   var pairs2 = wordLetterPairs(str2.toUpperCase());
   var intersection = 0;
@@ -38,6 +52,39 @@ function compareTwoStrings(str1, str2) {
 
   function wordLetterPairs(str) {
     return _flattenDeep(_map(str.split(' '), letterPairs));
+  }
+
+  function isEdgeCaseWithOneOrZeroChars(str1, str2) {
+    if (str1.length == str2.length && str1.length == 1) {
+      return true;
+    }
+    return false;
+  }
+
+  function calculateResultIfIdentical(str1, str2) {
+    if (str1.toUpperCase() == str2.toUpperCase()) {
+      return 1;
+    }
+    return null;
+  }
+
+  function calculateResultIfBothAreSingleCharacter(str1, str2) {
+    if (str1.length == 1 && str2.length == 1) {
+      return 0;
+    }
+  }
+
+  function calculateResultIfEitherIsEmpty(str1, str2) {
+    // if both are empty strings
+    if (str1.length == 0 && str2.length == 0) {
+      return 1;
+    }
+
+    // if only one is empty string
+    if ((str1.length + str2.length) > 0 && (str1.length * str2.length) == 0) {
+      return 0;
+    }
+    return null;
   }
 }
 
