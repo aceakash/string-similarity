@@ -88,3 +88,6 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
    { target: 'For sale: table in very good condition, olive green in colour.',
      rating: 0.7073170731707317 } }
 ```
+
+## Build Status		
+![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
