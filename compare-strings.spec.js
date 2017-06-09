@@ -9,7 +9,7 @@ describe('compareTwoStrings', function () {
 
   it('returns the correct value for different inputs:', function () {
     const testData = [
-      {first: 'french', second: 'quebec', expected: 0},  
+      {first: 'french', second: 'quebec', expected: 0},
       {first: 'france', second: 'france', expected: 1},
       {first: 'fRaNce', second: 'france', expected: 1},
       {first: 'healed', second: 'sealed', expected: 0.8},
@@ -21,7 +21,7 @@ describe('compareTwoStrings', function () {
       {first: '', second: '', expected: 1},
       {first: 'a', second: '', expected: 0},
       {first: '', second: 'a', expected: 0}
-    ];   
+    ];
 
     testData.forEach(td => {
       expect(compareTwoStrings(td.first, td.second)).toEqual(td.expected);
@@ -91,3 +91,66 @@ describe('findBestMatch', function () {
     expect(matches.bestMatch).toEqual({target: 'sealed', rating: 0.8});
   });
 });
+
+describe('findBestMatchWithIndex', function() {
+  var findBestMatchWithIndex = stringSimilarity.findBestMatchWithIndex;
+  var badArgsErrorMsg = 'Bad arguments: First argument should be a string, second should be an array of documents';
+
+  it('is a function', function () {
+    expect(typeof findBestMatchWithIndex).toBe('function');
+  });
+
+  it('accepts a string and an array of strings and returns an object', function () {
+    var output = findBestMatchWithIndex('one', [{ id: '1', string: 'one'}, { id: '2', string: 'two'}]);
+    expect(typeof output).toBe('object');
+  });
+
+  it("throws a 'Bad arguments' error if no arguments passed", function () {
+    expect(function () {
+      findBestMatchWithIndex();
+    }).toThrowError(badArgsErrorMsg);
+  });
+
+  it("throws a 'Bad arguments' error if first argument is not a non-empty string", function () {
+    expect(function () {
+      findBestMatchWithIndex('');
+    }).toThrowError(badArgsErrorMsg);
+
+    expect(function () {
+      findBestMatchWithIndex(8);
+    }).toThrowError(badArgsErrorMsg);
+  });
+
+  it("throws a 'Bad arguments' error if second argument is not an array with at least one element", function () {
+    expect(function () {
+      findBestMatchWithIndex('hello', 'something');
+    }).toThrowError(badArgsErrorMsg);
+
+    expect(function () {
+      findBestMatchWithIndex('hello', []);
+    }).toThrowError(badArgsErrorMsg);
+  });
+
+  it("throws a 'Bad arguments' error if second argument is not an array of documents", function () {
+    expect(function () {
+      findBestMatchWithIndex('hello', ['sdfdsf', 'something']);
+    }).toThrowError(badArgsErrorMsg);
+  });
+
+  it('assigns a similarity rating to each string passed in the array', function () {
+    var matches = findBestMatchWithIndex('healed', [{ id: 1, string: 'mailed' }, { id: 2, string: 'edward'} , { id: 3, string: 'sealed' }, { id: 4, string: 'theatre' } ]);
+
+    expect(matches.ratings).toEqual([
+      {id: 1, target: 'mailed', rating: 0.4},
+      {id: 2, target: 'edward', rating: 0.2},
+      {id: 3, target: 'sealed', rating: 0.8},
+      {id: 4, target: 'theatre', rating: 0.36363636363636365}
+    ]);
+  });
+
+  it("returns the best match and it's similarity rating", function () {
+    var matches = findBestMatchWithIndex('healed', [{ id: 1, string: 'mailed' }, { id: 2, string: 'edward'} , { id: 3, string: 'sealed' }, { id: 4, string: 'theatre' } ]);
+
+    expect(matches.bestMatch).toEqual({id: 3, target: 'sealed', rating: 0.8});
+  });
+})
