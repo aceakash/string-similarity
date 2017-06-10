@@ -6,6 +6,7 @@ var _flattenDeep = require('lodash/flattenDeep');
 
 exports.compareTwoStrings = compareTwoStrings;
 exports.findBestMatch = findBestMatch;
+exports.findBestMatchWithIndex = findBestMatchWithIndex;
 
 function compareTwoStrings(str1, str2) {
   var result = null;
@@ -116,5 +117,37 @@ function findBestMatch(mainString, targetStrings) {
       });
 
     return mainStringIsAString && targetStringsIsAnArrayOfStrings;
+  }
+}
+
+function findBestMatchWithIndex(mainString, targetDocuments) {
+  if (!areArgsValid(mainString, targetDocuments)) {
+    throw new Error('Bad arguments: First argument should be a string, second should be an array of documents');
+  }
+
+  var ratings = _map(targetDocuments, function (doc) {
+    return {
+      id: doc.id,
+      target: doc.string,
+      rating: compareTwoStrings(mainString, doc.string)
+    };
+  });
+
+  return {
+    ratings: ratings,
+    bestMatch: _maxBy(ratings, 'rating')
+  };
+
+  // private functions ---------------------------
+  function areArgsValid(mainString, targetDocuments) {
+    var mainStringIsAString = (typeof mainString === 'string');
+
+    var targetStringsIsAnArrayOfDocuments = Array.isArray(targetDocuments) &&
+      targetDocuments.length > 0 &&
+      _every(targetDocuments, function (doc) {
+        return (typeof doc === 'object' && doc.id && doc.string);
+      });
+
+    return mainStringIsAString && targetStringsIsAnArrayOfDocuments;
   }
 }

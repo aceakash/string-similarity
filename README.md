@@ -15,9 +15,12 @@ In your code:
 ```javascript
 var stringSimilarity = require('string-similarity');
 
-var similarity = stringSimilarity.compareTwoStrings('healed', 'sealed'); 
+var similarity = stringSimilarity.compareTwoStrings('healed', 'sealed');
 
 var matches = stringSimilarity.findBestMatch('healed', ['edward', 'sealed', 'theatre']);
+
+var indexedMatches = stringSimilarity.findBestMatchWithIndex('healed', [{ id: 1, string: 'mailed' }, { id: 2, string: 'edward'}, { id: 3, string: 'sealed' }, { id: 4, string: 'theatre' } ])
+
 ```
 ## API
 
@@ -28,31 +31,31 @@ Requiring the module gives an object with two methods:
 Returns a fraction between 0 and 1, which indicates the degree of similarity between the two strings. 0 indicates completely different strings, 1 indicates identical strings. The comparison is case-insensitive.
 
 ##### Arguments
-  
+
 1. string1 (string): The first string
 2. string2 (string): The second string
-  
+
 Order does not make a difference.
-  
+
 ##### Returns
-  
+
 (number): A fraction from 0 to 1, both inclusive. Higher number indicates more similarity.
 
 ##### Examples
-  
+
 ```javascript
 stringSimilarity.compareTwoStrings('healed', 'sealed');
 // → 0.8
 
-stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
+stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.',
   'For sale: table in very good  condition, olive green in colour.');
 // → 0.7073170731707317
 
-stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
+stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.',
   'For sale: green Subaru Impreza, 210,000 miles');
 // → 0.3013698630136986
 
-stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
+stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.',
   'Wanted: mountain bike with at least 21 gears.');
 // → 0.11267605633802817
 ```
@@ -72,11 +75,11 @@ Compares `mainString` against each string in `targetStrings`.
 ##### Examples
 ```javascript
 stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good condition.', [
-  'For sale: green Subaru Impreza, 210,000 miles', 
-  'For sale: table in very good condition, olive green in colour.', 
+  'For sale: green Subaru Impreza, 210,000 miles',
+  'For sale: table in very good condition, olive green in colour.',
   'Wanted: mountain bike with at least 21 gears.'
 ]);
-// → 
+// →
 { ratings:
    [ { target: 'For sale: green Subaru Impreza, 210,000 miles',
        rating: 0.3013698630136986 },
@@ -88,6 +91,39 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
    { target: 'For sale: table in very good condition, olive green in colour.',
      rating: 0.7073170731707317 } }
 ```
+
+### findBestMatchWithIndex(targetString, targetDocuments)
+
+Compares `mainString` against each string in `targetDocuments` that have ids. This is useful in instances where you might pre-process the strings and require to keep an id.
+
+##### Arguments
+
+1. mainString (string): The string to match each target string against.
+2. targetDocuments (Array): Each document in this array is an object with two keys (id, and string). The string property will be matched against the main string.
+
+##### Returns
+(Object): An object with a `ratings` property, which gives a similarity rating for each target string the id as passed in, and a `bestMatch` property, which specifies which target string was most similar to the main string.
+
+##### Examples
+```javascript
+stringSimilarity.findBestMatchWithIndex('Olive-green table for sale, in extremely good condition.', [{ id: 1,
+  string: 'For sale: green Subaru Impreza, 210,000 miles'},
+  {id: 2, string: 'For sale: table in very good condition, olive green in colour.'},
+  {id: 3, string: 'Wanted: mountain bike with at least 21 gears.'}
+]);
+// →
+{ ratings:
+   [ { id: 1, target: 'For sale: green Subaru Impreza, 210,000 miles',
+       rating: 0.3013698630136986 },
+     { id: 2, target: 'For sale: table in very good condition, olive green in colour.',
+       rating: 0.7073170731707317 },
+     { id: 3, target: 'Wanted: mountain bike with at least 21 gears.',
+       rating: 0.11267605633802817 } ],
+  bestMatch:
+   { id: 2, target: 'For sale: table in very good condition, olive green in colour.',
+     rating: 0.7073170731707317 } }
+```
+
 
 ## Build Status		
 ![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
