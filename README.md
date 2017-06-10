@@ -106,7 +106,7 @@ Compares `mainString` against each string in `targetDocuments` that have ids. Th
 
 ##### Examples
 ```javascript
-stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good condition.', [{ id: 1,
+stringSimilarity.findBestMatchWithIndex('Olive-green table for sale, in extremely good condition.', [{ id: 1,
   string: 'For sale: green Subaru Impreza, 210,000 miles'},
   {id: 2, string: 'For sale: table in very good condition, olive green in colour.'},
   {id: 3, string: 'Wanted: mountain bike with at least 21 gears.'}
