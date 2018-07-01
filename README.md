@@ -90,4 +90,3 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
 ```
 
 ![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/aceakash/string-similarity/badge.svg)](https://snyk.io/test/github/aceakash/string-similarity)
