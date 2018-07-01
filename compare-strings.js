@@ -1,15 +1,33 @@
-var _ = require('lodash');
+var _forEach = require('lodash/forEach');
+var _map = require('lodash/map');
+var _every = require('lodash/every');
+var _maxBy = require('lodash/maxBy');
+var _flattenDeep = require('lodash/flattenDeep');
 
 exports.compareTwoStrings = compareTwoStrings;
 exports.findBestMatch = findBestMatch;
 
 function compareTwoStrings(str1, str2) {
+  var result = null;
+  result = calculateResultIfIdentical(str1, str2);
+  if (result != null) {
+    return result;
+  }
+  result = calculateResultIfEitherIsEmpty(str1, str2);
+  if (result != null) {
+    return result;
+  }
+  result = calculateResultIfBothAreSingleCharacter(str1, str2);
+  if (result != null) {
+    return result;
+  }
+
   var pairs1 = wordLetterPairs(str1.toUpperCase());
   var pairs2 = wordLetterPairs(str2.toUpperCase());
   var intersection = 0;
   var union = pairs1.length + pairs2.length;
 
-  _.forEach(pairs1, function (pair1) {
+  _forEach(pairs1, function (pair1) {
     for(var i = 0; i < pairs2.length; i++) {
       var pair2 = pairs2[i];
       if (pair1 === pair2) {
@@ -33,10 +51,40 @@ function compareTwoStrings(str1, str2) {
   }
 
   function wordLetterPairs(str) {
-    return _( str.split(' ') )
-      .map(letterPairs)
-      .flatten()
-      .value();
+    return _flattenDeep(_map(str.split(' '), letterPairs));
+  }
+
+  function isEdgeCaseWithOneOrZeroChars(str1, str2) {
+    if (str1.length == str2.length && str1.length == 1) {
+      return true;
+    }
+    return false;
+  }
+
+  function calculateResultIfIdentical(str1, str2) {
+    if (str1.toUpperCase() == str2.toUpperCase()) {
+      return 1;
+    }
+    return null;
+  }
+
+  function calculateResultIfBothAreSingleCharacter(str1, str2) {
+    if (str1.length == 1 && str2.length == 1) {
+      return 0;
+    }
+  }
+
+  function calculateResultIfEitherIsEmpty(str1, str2) {
+    // if both are empty strings
+    if (str1.length == 0 && str2.length == 0) {
+      return 1;
+    }
+
+    // if only one is empty string
+    if ((str1.length + str2.length) > 0 && (str1.length * str2.length) == 0) {
+      return 0;
+    }
+    return null;
   }
 }
 
@@ -45,7 +93,7 @@ function findBestMatch(mainString, targetStrings) {
   if (!areArgsValid(mainString, targetStrings)) {
     throw new Error('Bad arguments: First argument should be a string, second should be an array of strings');
   }
-  var ratings = _.map(targetStrings, function (targetString) {
+  var ratings = _map(targetStrings, function (targetString) {
     return {
       target: targetString,
       rating: compareTwoStrings(mainString, targetString)
@@ -54,7 +102,7 @@ function findBestMatch(mainString, targetStrings) {
 
   return {
     ratings: ratings,
-    bestMatch: _.max(ratings, 'rating')
+    bestMatch: _maxBy(ratings, 'rating')
   };
 
   // private functions ---------------------------
@@ -63,7 +111,7 @@ function findBestMatch(mainString, targetStrings) {
 
     var targetStringsIsAnArrayOfStrings = Array.isArray(targetStrings) &&
       targetStrings.length > 0 &&
-      _.all(targetStrings, function (targetString) {
+      _every(targetStrings, function (targetString) {
         return (typeof targetString === 'string');
       });
 
