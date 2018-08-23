@@ -23,6 +23,9 @@
     "dice",
     "levenshtein"
   ],
+  "files": [
+    "compare-strings.js"
+  ],
   "author": "Akash Kurdekar <npm@kurdekar.com> (http://untilfalse.com/)",
   "license": "ISC",
   "devDependencies": {
