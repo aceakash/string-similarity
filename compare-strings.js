@@ -1,8 +1,8 @@
-var _forEach = require('lodash/forEach');
-var _map = require('lodash/map');
-var _every = require('lodash/every');
-var _maxBy = require('lodash/maxBy');
-var _flattenDeep = require('lodash/flattenDeep');
+var _forEach = require('lodash.foreach');
+var _map = require('lodash.map');
+var _every = require('lodash.every');
+var _maxBy = require('lodash.maxby');
+var _flattenDeep = require('lodash.flattendeep');
 
 exports.compareTwoStrings = compareTwoStrings;
 exports.findBestMatch = findBestMatch;

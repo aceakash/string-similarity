@@ -1,6 +1,6 @@
 {
   "name": "string-similarity",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Finds degree of similarity between strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
   "main": "compare-strings.js",
   "scripts": {
@@ -32,6 +32,10 @@
     "jasmine": "^3.2.0"
   },
   "dependencies": {
-    "lodash": "^4.13.1"
+    "lodash.every": "^4.6.0",
+    "lodash.flattendeep": "^4.4.0",
+    "lodash.foreach": "^4.5.0",
+    "lodash.map": "^4.6.0",
+    "lodash.maxby": "^4.6.0"
   }
 }
