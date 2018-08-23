@@ -4,7 +4,7 @@
   "description": "Finds degree of similarity between strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
   "main": "compare-strings.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -26,9 +26,7 @@
   "author": "Akash Kurdekar <npm@kurdekar.com> (http://untilfalse.com/)",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-jasmine": "^2.3.0",
-    "gulp-watch": "^4.3.6"
+    "jasmine": "^3.2.0"
   },
   "dependencies": {
     "lodash": "^4.13.1"
