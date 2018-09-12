@@ -54,13 +54,6 @@ function compareTwoStrings(str1, str2) {
     return _flattenDeep(_map(str.split(' '), letterPairs));
   }
 
-  function isEdgeCaseWithOneOrZeroChars(str1, str2) {
-    if (str1.length == str2.length && str1.length == 1) {
-      return true;
-    }
-    return false;
-  }
-
   function calculateResultIfIdentical(str1, str2) {
     if (str1.toUpperCase() == str2.toUpperCase()) {
       return 1;
