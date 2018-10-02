@@ -3,6 +3,22 @@ string-similarity
 
 Finds degree of similarity between two strings, based on [Dice's Coefficient](http://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient), which is mostly better than [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance).
 
+## Table of Contents
+
+* [Usage](#usage)
+* [API](#api)
+    * [compareTwoStrings(string1, string2)](#comparetwostringsstring1-string2)
+        * [Arguments](#arguments)
+        * [Returns](#returns)
+        * [Examples](#examples)
+    * [findBestMatch(mainString, targetStrings)](#findbestmatchmainstring-targetstrings)
+        * [Arguments](#arguments-1)
+        * [Returns](#returns-1)
+        * [Examples](#examples-1)
+* [Release Notes](#release-notes)
+    * [2.0.0](#200)
+
+
 ## Usage
 Install using:
 
@@ -88,6 +104,13 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
    { target: 'For sale: table in very good condition, olive green in colour.',
      rating: 0.7073170731707317 } }
 ```
+
+## Release Notes
+
+### 2.0.0
+* Removed production dependencies
+* Updated to ES6 (this breaks backward-compatibility for pre-ES6 apps)
+
 
 ![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/aceakash/string-similarity/badge.svg)](https://snyk.io/test/github/aceakash/string-similarity)
