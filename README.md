@@ -3,6 +3,22 @@ string-similarity
 
 Finds degree of similarity between two strings, based on [Dice's Coefficient](http://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient), which is mostly better than [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance).
 
+## Table of Contents
+
+* [Usage](#usage)
+* [API](#api)
+    * [compareTwoStrings(string1, string2)](#comparetwostringsstring1-string2)
+        * [Arguments](#arguments)
+        * [Returns](#returns)
+        * [Examples](#examples)
+    * [findBestMatch(mainString, targetStrings)](#findbestmatchmainstring-targetstrings)
+        * [Arguments](#arguments-1)
+        * [Returns](#returns-1)
+        * [Examples](#examples-1)
+* [Release Notes](#release-notes)
+    * [2.0.0](#200)
+
+
 ## Usage
 Install using:
 
