@@ -39,7 +39,7 @@ function areArgsValid (mainString, targetStrings) {
 	if (typeof mainString !== 'string') return false;
 	if (!Array.isArray(targetStrings)) return false;
 	if (!targetStrings.length) return false;
-	if (targetStrings.find(s => typeof s !== 'string')) return false;
+	if (targetStrings.some(s => typeof s !== 'string')) return false;
 	return true;
 }
 
