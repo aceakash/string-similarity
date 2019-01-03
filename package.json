@@ -24,7 +24,7 @@
     "levenshtein"
   ],
   "files": [
-    "compare-strings.js"
+    "compare-strings.js", "compare-strings.min.js"
   ],
   "author": "Akash Kurdekar <npm@kurdekar.com> (http://untilfalse.com/)",
   "license": "ISC",
