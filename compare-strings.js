@@ -1,9 +1,4 @@
-module.exports = {
-	compareTwoStrings,
-	findBestMatch
-};
-
-function compareTwoStrings(first, second) {
+export function compareTwoStrings(first, second) {
 	first = first.replace(/\s+/g, '')
 	second = second.replace(/\s+/g, '')
 
@@ -39,7 +34,7 @@ function compareTwoStrings(first, second) {
 	return (2.0 * intersectionSize) / (first.length + second.length - 2);
 }
 
-function findBestMatch(mainString, targetStrings) {
+export function findBestMatch(mainString, targetStrings) {
 	if (!areArgsValid(mainString, targetStrings)) throw new Error('Bad arguments: First argument should be a string, second should be an array of strings');
 	
 	const ratings = [];
