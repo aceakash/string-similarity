@@ -2,7 +2,10 @@
   "name": "string-similarity",
   "version": "3.0.0",
   "description": "Finds degree of similarity between strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
-  "main": "compare-strings.js",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "source": "compare-strings.js",
   "scripts": {
     "build": "microbundle",
     "test": "jasmine"
