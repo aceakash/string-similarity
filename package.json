@@ -4,6 +4,7 @@
   "description": "Finds degree of similarity between strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
   "main": "compare-strings.js",
   "scripts": {
+    "build": "microbundle",
     "test": "jasmine"
   },
   "repository": {
