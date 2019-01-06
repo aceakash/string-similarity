@@ -29,6 +29,7 @@
   "author": "Akash Kurdekar <npm@kurdekar.com> (http://untilfalse.com/)",
   "license": "ISC",
   "devDependencies": {
-    "jasmine": "^3.3.0"
+    "jasmine": "^3.3.0",
+    "microbundle": "^0.9.0"
   }
 }
