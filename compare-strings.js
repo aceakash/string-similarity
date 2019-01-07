@@ -15,7 +15,7 @@ function compareTwoStrings(first, second) {
 
 	let firstBigrams = new Map();
 	for (let i = 0; i < first.length - 1; i++) {
-		const bigram = first.substr(i, 2);
+		const bigram = first.substring(i, i + 2);
 		const count = firstBigrams.has(bigram)
 			? firstBigrams.get(bigram) + 1
 			: 1;
@@ -25,7 +25,7 @@ function compareTwoStrings(first, second) {
 
 	let intersectionSize = 0;
 	for (let i = 0; i < second.length - 1; i++) {
-		const bigram = second.substr(i, 2);
+		const bigram = second.substring(i, i + 2);
 		const count = firstBigrams.has(bigram)
 			? firstBigrams.get(bigram)
 			: 0;
