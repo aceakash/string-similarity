@@ -122,3 +122,12 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
 
 ![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/aceakash/string-similarity/badge.svg)](https://snyk.io/test/github/aceakash/string-similarity)
+
+### Code Visualization:
+
+Here is a cool visualization of the code evolution
+
+ [![Watch the video](https://img.youtube.com/vi/z2iu2dYt1pU/0.jpg)](https://www.youtube.com/watch?v=z2iu2dYt1pU)
+
+ [https://www.youtube.com/watch?v=z2iu2dYt1pU](https://www.youtube.com/watch?v=z2iu2dYt1pU)
+
