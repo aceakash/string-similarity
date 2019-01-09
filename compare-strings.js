@@ -60,25 +60,10 @@ function findBestMatch(mainString, targetStrings) {
 	return { ratings, bestMatch, bestMatchIndex };
 }
 
-function flattenDeep(arr) {
-	return Array.isArray(arr) ? arr.reduce((a, b) => a.concat(flattenDeep(b)), []) : [arr];
-}
-
 function areArgsValid(mainString, targetStrings) {
 	if (typeof mainString !== 'string') return false;
 	if (!Array.isArray(targetStrings)) return false;
 	if (!targetStrings.length) return false;
 	if (targetStrings.find(s => typeof s !== 'string')) return false;
 	return true;
-}
-
-function letterPairs(str) {
-	const pairs = [];
-	for (let i = 0, max = str.length - 1; i < max; i++) pairs[i] = str.substring(i, i + 2);
-	return pairs;
-}
-
-function wordLetterPairs(str) {
-	const pairs = str.toUpperCase().split(' ').map(letterPairs);
-	return flattenDeep(pairs);
 }
