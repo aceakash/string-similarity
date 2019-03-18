@@ -40,14 +40,15 @@ var matches = stringSimilarity.findBestMatch('healed', ['edward', 'sealed', 'the
 
 Requiring the module gives an object with two methods:
 
-### compareTwoStrings(string1, string2)
+### compareTwoStrings(removeSpaces,string1, string2)
 
 Returns a fraction between 0 and 1, which indicates the degree of similarity between the two strings. 0 indicates completely different strings, 1 indicates identical strings. The comparison is case-sensitive.
 
 ##### Arguments
-  
-1. string1 (string): The first string
-2. string2 (string): The second string
+
+1. removeSpaces (boolean): Remove spaces from both strings 
+2. string1 (string): The first string
+3. string2 (string): The second string
   
 Order does not make a difference.
   
@@ -58,37 +59,38 @@ Order does not make a difference.
 ##### Examples
   
 ```javascript
-stringSimilarity.compareTwoStrings('healed', 'sealed');
+stringSimilarity.compareTwoStrings(true,'healed', 'sealed');
 // → 0.8
 
-stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
+stringSimilarity.compareTwoStrings(true,'Olive-green table for sale, in extremely good condition.', 
   'For sale: table in very good  condition, olive green in colour.');
 // → 0.6060606060606061
 
-stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
+stringSimilarity.compareTwoStrings(true,'Olive-green table for sale, in extremely good condition.', 
   'For sale: green Subaru Impreza, 210,000 miles');
 // → 0.2558139534883721
 
-stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
+stringSimilarity.compareTwoStrings(true,'Olive-green table for sale, in extremely good condition.', 
   'Wanted: mountain bike with at least 21 gears.');
 // → 0.1411764705882353
 ```
 
-### findBestMatch(mainString, targetStrings)
+### findBestMatch(removeSpaces,mainString, targetStrings)
 
 Compares `mainString` against each string in `targetStrings`.
 
 ##### Arguments
 
-1. mainString (string): The string to match each target string against.
-2. targetStrings (Array): Each string in this array will be matched against the main string.
+1. removeSpaces (boolean): Remove spaces from main and target strings.
+2. mainString (string): The string to match each target string against.
+3. targetStrings (Array): Each string in this array will be matched against the main string.
 
 ##### Returns
 (Object): An object with a `ratings` property, which gives a similarity rating for each target string, a `bestMatch` property, which specifies which target string was most similar to the main string, and a `bestMatchIndex` property, which specifies the index of the bestMatch in the targetStrings array.
 
 ##### Examples
 ```javascript
-stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good condition.', [
+stringSimilarity.findBestMatch(true,'Olive-green table for sale, in extremely good condition.', [
   'For sale: green Subaru Impreza, 210,000 miles', 
   'For sale: table in very good condition, olive green in colour.', 
   'Wanted: mountain bike with at least 21 gears.'
