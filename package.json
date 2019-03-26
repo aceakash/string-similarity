@@ -1,9 +1,10 @@
 {
   "name": "string-similarity",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Finds degree of similarity between strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
   "main": "compare-strings.js",
   "scripts": {
+    "babel": "babel --minified compare-strings.js > compare-strings.min.js",
     "test": "jasmine"
   },
   "repository": {
@@ -24,11 +25,14 @@
     "levenshtein"
   ],
   "files": [
-    "compare-strings.js"
+    "compare-strings.js", "compare-strings.min.js"
   ],
   "author": "Akash Kurdekar <npm@kurdekar.com> (http://untilfalse.com/)",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
     "jasmine": "^3.3.0"
   }
 }
