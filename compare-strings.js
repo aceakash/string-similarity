@@ -15,7 +15,7 @@ function compareTwoStrings(first, second) {
 
 	let firstBigrams = new Map();
 	for (let i = 0; i < first.length - 1; i++) {
-		const bigram = first.substr(i, 2);
+		const bigram = first.substring(i, i + 2);
 		const count = firstBigrams.has(bigram)
 			? firstBigrams.get(bigram) + 1
 			: 1;
@@ -25,7 +25,7 @@ function compareTwoStrings(first, second) {
 
 	let intersectionSize = 0;
 	for (let i = 0; i < second.length - 1; i++) {
-		const bigram = second.substr(i, 2);
+		const bigram = second.substring(i, i + 2);
 		const count = firstBigrams.has(bigram)
 			? firstBigrams.get(bigram)
 			: 0;
@@ -60,25 +60,10 @@ function findBestMatch(mainString, targetStrings) {
 	return { ratings, bestMatch, bestMatchIndex };
 }
 
-function flattenDeep(arr) {
-	return Array.isArray(arr) ? arr.reduce((a, b) => a.concat(flattenDeep(b)), []) : [arr];
-}
-
 function areArgsValid(mainString, targetStrings) {
 	if (typeof mainString !== 'string') return false;
 	if (!Array.isArray(targetStrings)) return false;
 	if (!targetStrings.length) return false;
 	if (targetStrings.find(s => typeof s !== 'string')) return false;
 	return true;
-}
-
-function letterPairs(str) {
-	const pairs = [];
-	for (let i = 0, max = str.length - 1; i < max; i++) pairs[i] = str.substring(i, i + 2);
-	return pairs;
-}
-
-function wordLetterPairs(str) {
-	const pairs = str.toUpperCase().split(' ').map(letterPairs);
-	return flattenDeep(pairs);
 }
