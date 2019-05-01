@@ -18,6 +18,7 @@ Finds degree of similarity between two strings, based on [Dice's Coefficient](ht
 * [Release Notes](#release-notes)
     * [2.0.0](#200)
     * [3.0.0](#300)
+    * [3.0.1](#301)
 
 
 ## Usage
@@ -119,6 +120,9 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
 * The algorithm has been tweaked slightly to disregard spaces and word boundaries. This will change the rating values slightly but not enough to make a significant difference
 * Adding a `bestMatchIndex` to the results for `findBestMatch(..)` to point to the best match in the supplied `targetStrings` array
 
+### 3.0.1
+* Refactoring: removed unused functions; used `substring` instead of `substr`
+* Updated dependencies
 
 ![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/aceakash/string-similarity/badge.svg)](https://snyk.io/test/github/aceakash/string-similarity)
