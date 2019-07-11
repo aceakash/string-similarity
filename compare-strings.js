@@ -3,8 +3,12 @@ module.exports = {
 	findBestMatch
 };
 
-function compareTwoStrings(first, second) {
-	first = first.replace(/\s+/g, '')
+function compareTwoStrings(first, second, ignoreCase) {
+    if (ignoreCase) {
+        first = first.toLowerCase();
+        second = second.toLowerCase();
+    }
+    first = first.replace(/\s+/g, '')
 	second = second.replace(/\s+/g, '')
 
 	if (!first.length && !second.length) return 1;                   // if both are empty strings
@@ -39,7 +43,7 @@ function compareTwoStrings(first, second) {
 	return (2.0 * intersectionSize) / (first.length + second.length - 2);
 }
 
-function findBestMatch(mainString, targetStrings) {
+function findBestMatch(mainString, targetStrings, ignoreCase) {
 	if (!areArgsValid(mainString, targetStrings)) throw new Error('Bad arguments: First argument should be a string, second should be an array of strings');
 	
 	const ratings = [];
@@ -47,7 +51,7 @@ function findBestMatch(mainString, targetStrings) {
 
 	for (let i = 0; i < targetStrings.length; i++) {
 		const currentTargetString = targetStrings[i];
-		const currentRating = compareTwoStrings(mainString, currentTargetString)
+		const currentRating = compareTwoStrings(mainString, currentTargetString, ignoreCase)
 		ratings.push({target: currentTargetString, rating: currentRating})
 		if (currentRating > ratings[bestMatchIndex].rating) {
 			bestMatchIndex = i
@@ -60,10 +64,11 @@ function findBestMatch(mainString, targetStrings) {
 	return { ratings, bestMatch, bestMatchIndex };
 }
 
-function areArgsValid(mainString, targetStrings) {
+function areArgsValid(mainString, targetStrings, ignoreCase) {
 	if (typeof mainString !== 'string') return false;
 	if (!Array.isArray(targetStrings)) return false;
 	if (!targetStrings.length) return false;
-	if (targetStrings.find(s => typeof s !== 'string')) return false;
+    if (targetStrings.find(s => typeof s !== 'string')) return false;
+    if (ignoreCase && typeof ignoreCase !== 'boolean') return false;
 	return true;
 }

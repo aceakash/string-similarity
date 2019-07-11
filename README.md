@@ -7,11 +7,11 @@ Finds degree of similarity between two strings, based on [Dice's Coefficient](ht
 
 * [Usage](#usage)
 * [API](#api)
-    * [compareTwoStrings(string1, string2)](#comparetwostringsstring1-string2)
+    * [compareTwoStrings(string1, string2, ignoreCase)](#comparetwostringsstring1-string2)
         * [Arguments](#arguments)
         * [Returns](#returns)
         * [Examples](#examples)
-    * [findBestMatch(mainString, targetStrings)](#findbestmatchmainstring-targetstrings)
+    * [findBestMatch(mainString, targetStrings, ignoreCase)](#findbestmatchmainstring-targetstrings)
         * [Arguments](#arguments-1)
         * [Returns](#returns-1)
         * [Examples](#examples-1)
@@ -37,18 +37,26 @@ var similarity = stringSimilarity.compareTwoStrings('healed', 'sealed');
 
 var matches = stringSimilarity.findBestMatch('healed', ['edward', 'sealed', 'theatre']);
 ```
+
+Optionally provide the parameter `ignoreCase` to do a case insensitive string comparison.
+```javascript
+var similarity = stringSimilarity.compareTwoStrings('healed', 'sealed', true); 
+
+var matches = stringSimilarity.findBestMatch('healed', ['edward', 'sealed', 'theatre'], true);
+```
 ## API
 
 Requiring the module gives an object with two methods:
 
 ### compareTwoStrings(string1, string2)
 
-Returns a fraction between 0 and 1, which indicates the degree of similarity between the two strings. 0 indicates completely different strings, 1 indicates identical strings. The comparison is case-sensitive.
+Returns a fraction between 0 and 1, which indicates the degree of similarity between the two strings. 0 indicates completely different strings, 1 indicates identical strings.
 
 ##### Arguments
   
 1. string1 (string): The first string
 2. string2 (string): The second string
+3. ignoreCase (boolean): Provide optionally - set to true if you want to ignore case in the string comparison.
   
 Order does not make a difference.
   
@@ -73,6 +81,9 @@ stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely goo
 stringSimilarity.compareTwoStrings('Olive-green table for sale, in extremely good condition.', 
   'Wanted: mountain bike with at least 21 gears.');
 // → 0.1411764705882353
+
+stringSimilarity.compareTwoStrings('healed', 'HEALED', true);
+// → 1
 ```
 
 ### findBestMatch(mainString, targetStrings)
@@ -83,6 +94,7 @@ Compares `mainString` against each string in `targetStrings`.
 
 1. mainString (string): The string to match each target string against.
 2. targetStrings (Array): Each string in this array will be matched against the main string.
+3. ignoreCase (boolean): Provide optionally - set to true if you want to ignore case in the string comparison.
 
 ##### Returns
 (Object): An object with a `ratings` property, which gives a similarity rating for each target string, a `bestMatch` property, which specifies which target string was most similar to the main string, and a `bestMatchIndex` property, which specifies the index of the bestMatch in the targetStrings array.

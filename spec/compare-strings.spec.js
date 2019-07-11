@@ -25,11 +25,12 @@ describe('compareTwoStrings', function () {
       { first: 'a', second: '', expected: 0 },
       { first: '', second: 'a', expected: 0 },
       { first: 'apple event', second: 'apple    event', expected: 1 },
-      { first: 'iphone', second: 'iphone x', expected: 0.9090909090909091 }
+      { first: 'iphone', second: 'iphone x', expected: 0.9090909090909091 },
+      { first: 'iPhone', second: 'IPHONE', ignoreCase: true, expected: 1 },
     ];
 
     testData.forEach(td => {
-      expect(compareTwoStrings(td.first, td.second)).toBe(td.expected, td);
+      expect(compareTwoStrings(td.first, td.second, td.ignoreCase)).toBe(td.expected, td);
     });
   });
 });
@@ -88,6 +89,14 @@ describe('findBestMatch', function () {
       { target: 'sealed', rating: 0.8 },
       { target: 'theatre', rating: 0.36363636363636365 }
     ]);
+  });
+
+  it('Ignores case when comparing when "ignoreCase" set to true', function() {
+    var output = findBestMatch('teststring', ['TESTSTRING', '123456String'], true);
+    expect(output.ratings).toEqual([
+        { target: 'TESTSTRING', rating: 1 },
+        { target: '123456String', rating: 0.5 },
+    ])
   });
 
   it("returns the best match and its similarity rating", function () {
