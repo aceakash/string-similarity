@@ -4,8 +4,8 @@ module.exports = {
 };
 
 function compareTwoStrings(first, second) {
-	first = first.replace(/\s+/g, '')
-	second = second.replace(/\s+/g, '')
+	first = first.toString().replace(/\s+/g, '')
+	second = second.toString().replace(/\s+/g, '')
 
 	if (!first.length && !second.length) return 1;                   // if both are empty strings
 	if (!first.length || !second.length) return 0;                   // if only one is empty string
