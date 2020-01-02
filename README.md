@@ -6,20 +6,22 @@ Finds degree of similarity between two strings, based on [Dice's Coefficient](ht
 ## Table of Contents
 
 * [Usage](#usage)
+  + [For Node.js](#for-nodejs)
+  + [For browser apps](#for-browser-apps)
 * [API](#api)
-    * [compareTwoStrings(string1, string2)](#comparetwostringsstring1-string2)
-        * [Arguments](#arguments)
-        * [Returns](#returns)
-        * [Examples](#examples)
-    * [findBestMatch(mainString, targetStrings)](#findbestmatchmainstring-targetstrings)
-        * [Arguments](#arguments-1)
-        * [Returns](#returns-1)
-        * [Examples](#examples-1)
+  + [compareTwoStrings(string1, string2)](#comparetwostringsstring1-string2)
+      * [Arguments](#arguments)
+      * [Returns](#returns)
+      * [Examples](#examples)
+  + [findBestMatch(mainString, targetStrings)](#findbestmatchmainstring-targetstrings)
+      * [Arguments](#arguments-1)
+      * [Returns](#returns-1)
+      * [Examples](#examples-1)
 * [Release Notes](#release-notes)
-    * [2.0.0](#200)
-    * [3.0.0](#300)
-    * [3.0.1](#301)
-    * [4.0.0](#400)
+  + [2.0.0](#200)
+  + [3.0.0](#300)
+  + [3.0.1](#301)
+  + [4.0.1](#401)
 
 
 ## Usage
@@ -44,9 +46,9 @@ var matches = stringSimilarity.findBestMatch('healed', ['edward', 'sealed', 'the
 
 #### For browser apps
 
-Include `<script>//unpkg.com/string-similarity/umd/string-similarity.min.js</script>` to get the latest version.
+Include `<script src="//unpkg.com/string-similarity/umd/string-similarity.min.js"></script>` to get the latest version.
 
-Or `<script>//unpkg.com/string-similarity@3.0.0/umd/string-similarity.min.js</script>` to get a specific version (3.0.0) in this case.
+Or `<script src="//unpkg.com/string-similarity@4.0.1/umd/string-similarity.min.js"></script>` to get a specific version (4.0.1) in this case.
 
 This exposes a global variable called `stringSimilarity` which you can start using.
 
@@ -145,7 +147,7 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
 * Refactoring: removed unused functions; used `substring` instead of `substr`
 * Updated dependencies
 
-### 4.0.0
+### 4.0.1
 * Distributing as an UMD build to be used in browsers.
 
 ![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
