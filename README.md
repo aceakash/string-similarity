@@ -19,9 +19,13 @@ Finds degree of similarity between two strings, based on [Dice's Coefficient](ht
     * [2.0.0](#200)
     * [3.0.0](#300)
     * [3.0.1](#301)
+    * [4.0.0](#400)
 
 
 ## Usage
+
+#### For Node.js
+
 Install using:
 
 ```shell
@@ -37,9 +41,26 @@ var similarity = stringSimilarity.compareTwoStrings('healed', 'sealed');
 
 var matches = stringSimilarity.findBestMatch('healed', ['edward', 'sealed', 'theatre']);
 ```
+
+#### For browser apps
+
+Include `<script>//unpkg.com/string-similarity/umd/string-similarity.min.js</script>` to get the latest version.
+
+Or `<script>//unpkg.com/string-similarity@3.0.0/umd/string-similarity.min.js</script>` to get a specific version (3.0.0) in this case.
+
+This exposes a global variable called `stringSimilarity` which you can start using.
+
+```
+<script>
+  stringSimilarity.compareTwoStrings('what!', 'who?');
+</script>
+```
+
+(The package is exposed as UMD, so you can consume it as such)
+
 ## API
 
-Requiring the module gives an object with two methods:
+The package contains two methods:
 
 ### compareTwoStrings(string1, string2)
 
@@ -123,6 +144,9 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
 ### 3.0.1
 * Refactoring: removed unused functions; used `substring` instead of `substr`
 * Updated dependencies
+
+### 4.0.0
+* Distributing as an UMD build to be used in browsers.
 
 ![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/aceakash/string-similarity/badge.svg)](https://snyk.io/test/github/aceakash/string-similarity)
