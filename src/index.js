@@ -51,6 +51,9 @@ function findBestMatch(mainString, targetStrings) {
 		ratings.push({target: currentTargetString, rating: currentRating})
 		if (currentRating > ratings[bestMatchIndex].rating) {
 			bestMatchIndex = i
+                        if (currentRating == 1) {
+                                break
+                        }
 		}
 	}
 	
