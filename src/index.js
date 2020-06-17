@@ -1,6 +1,6 @@
 module.exports = {
-	compareTwoStrings,
-	findBestMatch
+	compareTwoStrings:compareTwoStrings,
+	findBestMatch:findBestMatch
 };
 
 function compareTwoStrings(first, second) {
@@ -57,13 +57,13 @@ function findBestMatch(mainString, targetStrings) {
 	
 	const bestMatch = ratings[bestMatchIndex]
 	
-	return { ratings, bestMatch, bestMatchIndex };
+	return { ratings: ratings, bestMatch: bestMatch, bestMatchIndex: bestMatchIndex };
 }
 
 function areArgsValid(mainString, targetStrings) {
 	if (typeof mainString !== 'string') return false;
 	if (!Array.isArray(targetStrings)) return false;
 	if (!targetStrings.length) return false;
-	if (targetStrings.find(s => typeof s !== 'string')) return false;
+	if (targetStrings.find( function (s) { return typeof s !== 'string'})) return false;
 	return true;
 }
