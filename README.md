@@ -5,23 +5,26 @@ Finds degree of similarity between two strings, based on [Dice's Coefficient](ht
 
 ## Table of Contents
 
-* [Usage](#usage)
-  + [For Node.js](#for-nodejs)
-  + [For browser apps](#for-browser-apps)
-* [API](#api)
-  + [compareTwoStrings(string1, string2)](#comparetwostringsstring1-string2)
-      * [Arguments](#arguments)
-      * [Returns](#returns)
-      * [Examples](#examples)
-  + [findBestMatch(mainString, targetStrings)](#findbestmatchmainstring-targetstrings)
-      * [Arguments](#arguments-1)
-      * [Returns](#returns-1)
-      * [Examples](#examples-1)
-* [Release Notes](#release-notes)
-  + [2.0.0](#200)
-  + [3.0.0](#300)
-  + [3.0.1](#301)
-  + [4.0.1](#401)
+- [string-similarity](#string-similarity)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+      - [For Node.js](#for-nodejs)
+      - [For browser apps](#for-browser-apps)
+  - [API](#api)
+    - [compareTwoStrings(string1, string2)](#comparetwostringsstring1-string2)
+        - [Arguments](#arguments)
+        - [Returns](#returns)
+        - [Examples](#examples)
+    - [findBestMatch(mainString, targetStrings)](#findbestmatchmainstring-targetstrings)
+        - [Arguments](#arguments-1)
+        - [Returns](#returns-1)
+        - [Examples](#examples-1)
+  - [Release Notes](#release-notes)
+    - [2.0.0](#200)
+    - [3.0.0](#300)
+    - [3.0.1](#301)
+    - [4.0.1](#401)
+    - [4.0.2](#402)
 
 
 ## Usage
@@ -149,6 +152,10 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
 
 ### 4.0.1
 * Distributing as an UMD build to be used in browsers.
+
+### 4.0.2
+* Update dependencies to latest versions.
+
 
 ![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/aceakash/string-similarity/badge.svg)](https://snyk.io/test/github/aceakash/string-similarity)
