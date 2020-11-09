@@ -1,6 +1,6 @@
 {
   "name": "string-similarity",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Finds degree of similarity between strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
   "main": "src/index.js",
   "scripts": {
@@ -32,8 +32,8 @@
   "author": "Akash Kurdekar <npm@kurdekar.com> (http://untilfalse.com/)",
   "license": "ISC",
   "devDependencies": {
-    "jasmine": "^3.6.1",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "jasmine": "^3.6.3",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
   }
 }

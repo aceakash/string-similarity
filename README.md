@@ -25,6 +25,7 @@ Finds degree of similarity between two strings, based on [Dice's Coefficient](ht
     - [3.0.1](#301)
     - [4.0.1](#401)
     - [4.0.2](#402)
+    - [4.0.3](#403)
 
 
 ## Usage
@@ -155,6 +156,9 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
 
 ### 4.0.2
 * Update dependencies to latest versions.
+
+### 4.0.3
+* Make compatible with IE and ES5. Also, update deps. (see [PR56](https://github.com/aceakash/string-similarity/pull/56))
 
 
 ![Build status](https://codeship.com/projects/2aa453d0-0959-0134-8a76-4abcb29fe9b4/status?branch=master)
