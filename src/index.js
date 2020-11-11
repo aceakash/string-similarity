@@ -13,20 +13,20 @@ function compareTwoStrings(first, second) {
 	if (first.length === 1 && second.length === 1) return 0;         // both are 1-letter strings
 	if (first.length < 2 || second.length < 2) return 0;			 // if either is a 1-letter string
 
-	let firstBigrams = new Map();
-	for (let i = 0; i < first.length - 1; i++) {
-		const bigram = first.substring(i, i + 2);
-		const count = firstBigrams.has(bigram)
+	var firstBigrams = new Map();
+	for (var i = 0; i < first.length - 1; i++) {
+		var bigram = first.substring(i, i + 2);
+		var count = firstBigrams.has(bigram)
 			? firstBigrams.get(bigram) + 1
 			: 1;
 
 		firstBigrams.set(bigram, count);
 	};
 
-	let intersectionSize = 0;
-	for (let i = 0; i < second.length - 1; i++) {
-		const bigram = second.substring(i, i + 2);
-		const count = firstBigrams.has(bigram)
+	var intersectionSize = 0;
+	for (var i = 0; i < second.length - 1; i++) {
+		var bigram = second.substring(i, i + 2);
+		var count = firstBigrams.has(bigram)
 			? firstBigrams.get(bigram)
 			: 0;
 
@@ -42,12 +42,12 @@ function compareTwoStrings(first, second) {
 function findBestMatch(mainString, targetStrings) {
 	if (!areArgsValid(mainString, targetStrings)) throw new Error('Bad arguments: First argument should be a string, second should be an array of strings');
 	
-	const ratings = [];
-	let bestMatchIndex = 0;
+	var ratings = [];
+	var bestMatchIndex = 0;
 
-	for (let i = 0; i < targetStrings.length; i++) {
-		const currentTargetString = targetStrings[i];
-		const currentRating = compareTwoStrings(mainString, currentTargetString)
+	for (var i = 0; i < targetStrings.length; i++) {
+		var currentTargetString = targetStrings[i];
+		var currentRating = compareTwoStrings(mainString, currentTargetString)
 		ratings.push({target: currentTargetString, rating: currentRating})
 		if (currentRating > ratings[bestMatchIndex].rating) {
 			bestMatchIndex = i
@@ -55,7 +55,7 @@ function findBestMatch(mainString, targetStrings) {
 	}
 	
 	
-	const bestMatch = ratings[bestMatchIndex]
+	var bestMatch = ratings[bestMatchIndex]
 	
 	return { ratings: ratings, bestMatch: bestMatch, bestMatchIndex: bestMatchIndex };
 }
