@@ -7,11 +7,8 @@ function compareTwoStrings(first, second) {
 	first = first.replace(/\s+/g, '')
 	second = second.replace(/\s+/g, '')
 
-	if (!first.length && !second.length) return 1;                   // if both are empty strings
-	if (!first.length || !second.length) return 0;                   // if only one is empty string
-	if (first === second) return 1;       							 // identical
-	if (first.length === 1 && second.length === 1) return 0;         // both are 1-letter strings
-	if (first.length < 2 || second.length < 2) return 0;			 // if either is a 1-letter string
+	if (first === second) return 1; // identical or empty
+	if (first.length < 2 || second.length < 2) return 0; // if either is a 0-letter or 1-letter string
 
 	let firstBigrams = new Map();
 	for (let i = 0; i < first.length - 1; i++) {
