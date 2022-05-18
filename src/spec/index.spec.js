@@ -109,15 +109,26 @@ describe('findBestMatch', function () {
     }).toThrowError(badArgsErrorMsg);
   });
 
-    it("throws a 'Bad arguments' error if second argument is an array of objects, and a key is supplied but that key does not produce a string for all objects", function () {
-      const inputObject = [
-        { name: 'two' },
-        { name: 3 }
-      ]
-      expect(function () {
-        findBestMatch('hello', inputObject);
-      }).toThrowError(badArgsErrorMsg);
-    });
+  it("throws a 'Bad arguments' error if second argument is an array of objects, and a key is supplied but that key does not produce a string for all objects", function () {
+    const inputObject = [
+      { name: 'two' },
+      { name: 3 }
+    ]
+    expect(function () {
+      findBestMatch('hello', inputObject);
+    }).toThrowError(badArgsErrorMsg);
+  });
+
+  it("throws a 'Bad arguments' error if second argument is an array and a key is supplied but not all members of the array are objects", function () {
+    const inputObject = [
+      { name: 'two' },
+      "three"
+    ]
+    expect(function () {
+      findBestMatch('hello', inputObject);
+    }).toThrowError(badArgsErrorMsg);
+  });
+
 
   it('assigns a similarity rating to each string passed in the array', function () {
     var matches = findBestMatch('healed', ['mailed', 'edward', 'sealed', 'theatre']);
