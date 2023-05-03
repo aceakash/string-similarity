@@ -36,16 +36,17 @@ function compareTwoStrings(first, second) {
 	return (2.0 * intersectionSize) / (first.length + second.length - 2);
 }
 
-function findBestMatch(mainString, targetStrings) {
-	if (!areArgsValid(mainString, targetStrings)) throw new Error('Bad arguments: First argument should be a string, second should be an array of strings');
+function findBestMatch(mainString, targets, key) {
+	if (!areArgsValid(mainString, targets, key)) throw new Error('Bad arguments: First argument should be a string, second should be an array of strings, or an array of objects with a key which relates to a string');
 	
 	const ratings = [];
 	let bestMatchIndex = 0;
 
-	for (let i = 0; i < targetStrings.length; i++) {
-		const currentTargetString = targetStrings[i];
+	for (let i = 0; i < targets.length; i++) {
+    const currentTarget = targets[i]
+		const currentTargetString = key ? currentTarget[key] : currentTarget;
 		const currentRating = compareTwoStrings(mainString, currentTargetString)
-		ratings.push({target: currentTargetString, rating: currentRating})
+		ratings.push({target: currentTarget, rating: currentRating})
 		if (currentRating > ratings[bestMatchIndex].rating) {
 			bestMatchIndex = i
 		}
@@ -57,10 +58,13 @@ function findBestMatch(mainString, targetStrings) {
 	return { ratings: ratings, bestMatch: bestMatch, bestMatchIndex: bestMatchIndex };
 }
 
-function areArgsValid(mainString, targetStrings) {
+function areArgsValid(mainString, targets, key) {
 	if (typeof mainString !== 'string') return false;
-	if (!Array.isArray(targetStrings)) return false;
-	if (!targetStrings.length) return false;
-	if (targetStrings.find( function (s) { return typeof s !== 'string'})) return false;
+	if (!Array.isArray(targets)) return false;
+	if (!targets.length) return false;
+	if (targets.find( function (s) {
+    const string = key ? s[key] : s
+    return typeof string !== 'string'
+  })) return false;
 	return true;
 }

@@ -36,7 +36,7 @@ describe('compareTwoStrings', function () {
 
 describe('findBestMatch', function () {
   var findBestMatch = stringSimilarity.findBestMatch;
-  var badArgsErrorMsg = 'Bad arguments: First argument should be a string, second should be an array of strings';
+  var badArgsErrorMsg = 'Bad arguments: First argument should be a string, second should be an array of strings, or an array of objects with a key which relates to a string';
 
   it('is a function', function () {
     expect(typeof findBestMatch).toBe('function');
@@ -46,6 +46,16 @@ describe('findBestMatch', function () {
     var output = findBestMatch('one', ['two', 'three']);
     expect(typeof output).toBe('object');
   });
+
+  it('accepts a string and an array of objects, and a key which produces a string for all objects, and returns an object', function () {
+    const inputObject = [
+      { name: 'two' },
+      { name: 'three' }
+    ]
+    var output = findBestMatch('one', inputObject, 'name');
+    expect(typeof output).toBe('object');
+  });
+
 
   it("throws a 'Bad arguments' error if no arguments passed", function () {
     expect(function () {
@@ -78,6 +88,47 @@ describe('findBestMatch', function () {
       findBestMatch('hello', [2, 'something']);
     }).toThrowError(badArgsErrorMsg);
   });
+
+  it("throws a 'Bad arguments' error if second argument is an array of objects, but no key is supplied", function () {
+    const inputObject = [
+      { name: 'two' },
+      { name: 'three' }
+    ]
+    expect(function () {
+      findBestMatch('hello', inputObject);
+    }).toThrowError(badArgsErrorMsg);
+  });
+
+  it("throws a 'Bad arguments' error if second argument is an array of objects, and a key is supplied but not all objects have that key", function () {
+    const inputObject = [
+      { name: 'two' },
+      { somethingElse: 'three' }
+    ]
+    expect(function () {
+      findBestMatch('hello', inputObject);
+    }).toThrowError(badArgsErrorMsg);
+  });
+
+  it("throws a 'Bad arguments' error if second argument is an array of objects, and a key is supplied but that key does not produce a string for all objects", function () {
+    const inputObject = [
+      { name: 'two' },
+      { name: 3 }
+    ]
+    expect(function () {
+      findBestMatch('hello', inputObject);
+    }).toThrowError(badArgsErrorMsg);
+  });
+
+  it("throws a 'Bad arguments' error if second argument is an array and a key is supplied but not all members of the array are objects", function () {
+    const inputObject = [
+      { name: 'two' },
+      "three"
+    ]
+    expect(function () {
+      findBestMatch('hello', inputObject);
+    }).toThrowError(badArgsErrorMsg);
+  });
+
 
   it('assigns a similarity rating to each string passed in the array', function () {
     var matches = findBestMatch('healed', ['mailed', 'edward', 'sealed', 'theatre']);
